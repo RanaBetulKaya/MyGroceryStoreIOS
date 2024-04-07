@@ -237,25 +237,6 @@
             </objects>
             <point key="canvasLocation" x="1183.969465648855" y="-305.63380281690144"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="2Ld-d4-jNx">
-            <objects>
-                <viewController id="aLJ-UN-QKd" customClass="HomeViewController" customModule="MyGroceryStoreIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="AY5-Gr-6Ix">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="tp9-4H-NCK">
-                            <imageReference key="image" image="line.3.horizontal" catalog="system" symbolScale="large" variableValue="0.0"/>
-                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="sideMenuBtn" destination="tp9-4H-NCK" id="xbo-CK-0ms"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ipm-Nm-K9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4789" y="-794"/>
-        </scene>
         <!--Category View Controller-->
         <scene sceneID="I5L-TN-yO3">
             <objects>
@@ -308,7 +289,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0U-qM-iKa">
-                                <rect key="frame" x="0.0" y="70" width="393" height="44"/>
+                                <rect key="frame" x="0.0" y="58" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <items>
@@ -348,6 +329,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ymc-tQ-9ec">
+                                <rect key="frame" x="0.0" y="58" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <items>
+                                    <navigationItem title="Profil" id="AeX-jt-PVp"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TaY-Tx-s1c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -365,6 +354,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHd-O5-rZP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4789" y="-1546"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="Xdt-6o-Dg7">
+            <objects>
+                <viewController id="o72-WJ-opm" customClass="HomeViewController" customModule="MyGroceryStoreIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F2T-2h-pBr">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mgj-N8-GkG">
+                                <rect key="frame" x="0.0" y="58" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <items>
+                                    <navigationItem title="Anasayfa" id="5Po-D1-E06"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jxn-8z-dRd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mcz-hv-Q1f">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" id="6i6-jD-aB5">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sideMenuBtn" destination="6i6-jD-aB5" id="6Jh-Op-3mm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iwE-Nx-ioT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4789" y="-818"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E5X-ML-zBn">
@@ -431,24 +453,6 @@
             <point key="canvasLocation" x="2520" y="-306"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="4R9-Gq-iyw">
-            <objects>
-                <navigationController storyboardIdentifier="HomeNavID" automaticallyAdjustsScrollViewInsets="NO" id="acm-80-ahx" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RAN-FE-aCS">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="aLJ-UN-QKd" kind="relationship" relationship="rootViewController" id="cxU-30-SQX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NuQ-K5-MdD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3795" y="-794"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="72r-uy-eRc">
             <objects>
                 <navigationController storyboardIdentifier="CategoryNavID" automaticallyAdjustsScrollViewInsets="NO" id="X2M-Ce-FyV" sceneMemberID="viewController">
@@ -475,7 +479,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t1O-Ye-unx">
-                                <rect key="frame" x="0.0" y="69" width="393" height="44"/>
+                                <rect key="frame" x="0.0" y="58" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" systemColor="secondarySystemBackgroundColor"/>
                                 <items>
@@ -498,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6j-JC-K1W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5715.2671755725187" y="1535.9154929577467"/>
+            <point key="canvasLocation" x="4789" y="1536"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zes-Hm-1oV">
@@ -516,7 +520,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGx-7v-wNs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4788.5496183206105" y="1535.9154929577467"/>
+            <point key="canvasLocation" x="3795" y="1536"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sSc-8a-vhO">
@@ -535,6 +539,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Eo-P4-HLd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3794.6564885496182" y="745.77464788732402"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pPM-bF-9iQ">
+            <objects>
+                <navigationController storyboardIdentifier="HomeNavID" automaticallyAdjustsScrollViewInsets="NO" id="cUH-Uj-2g1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hOr-XT-ZW7">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o72-WJ-opm" kind="relationship" relationship="rootViewController" id="YcZ-7X-D66"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hym-Q5-Efs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3795" y="-818"/>
         </scene>
     </scenes>
     <resources>
@@ -556,6 +578,9 @@
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
