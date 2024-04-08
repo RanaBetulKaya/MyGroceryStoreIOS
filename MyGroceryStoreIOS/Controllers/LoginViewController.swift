@@ -27,9 +27,9 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     // viewDidAppear fonksiyonunu kontrol et
-    /*override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         checkUserInfo()
-    }*/
+    }
     @IBAction func signUpButton(_ sender: Any) {
         let storyboard=UIStoryboard(name: "Main", bundle: nil)
         let vc=storyboard.instantiateViewController(identifier: "signUpView")
