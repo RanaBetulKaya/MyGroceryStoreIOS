@@ -8,6 +8,9 @@
 import Foundation
 
 struct HomeCategoryModel{
-    let img_url, name, type:String
+    var img_url: String
+    var type: String
+    var name: String
+    
     
 }
