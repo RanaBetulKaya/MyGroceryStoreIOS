@@ -18,4 +18,10 @@ extension UIViewController{
         alertMessagePopUpBox.addAction(okButton)
         self.present(alertMessagePopUpBox, animated: true)
     }
+    
+}
+extension String{
+    var asURL: URL?{
+        return URL(string: self)
+    }
 }
