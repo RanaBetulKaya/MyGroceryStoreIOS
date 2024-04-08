@@ -13,18 +13,50 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var db = Firestore.firestore()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        
+        switch collectionView{
+        case categoryCollectionView:
+            return categories.count
+        case salesCollectionView:
+            return populars.count
+        default: return 0
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-        cell.setup(category: categories[indexPath.row])
-        return cell
+        
+        switch collectionView{
+        case categoryCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+            cell.setup(category: categories[indexPath.row])
+            return cell
+        case salesCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SalesCollectionViewCell.identifier, for: indexPath) as! SalesCollectionViewCell
+            cell.setup(product: populars[indexPath.row])
+            return cell
+        default: return UICollectionViewCell()
+        }
+        
+        
+        
+        
     }
     
     
 
-    var categories: [HomeCategoryModel] = []
+    var categories: [HomeCategoryModel] = [
+        .init(img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", type: "Indian", name: "Aloo")
+    ]
+    
+    var populars: [SaleProductModel] = [
+        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
+        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
+        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
+        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
+        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
+        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36)
+    ]
     // fetch data
     
         
@@ -48,6 +80,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }*/
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
+    @IBOutlet weak var salesCollectionView: UICollectionView!
+    
     @IBOutlet weak var sideMenuBtn: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +90,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         sideMenuBtn.target = revealViewController()
         sideMenuBtn.action = #selector(revealViewController()?.revealSideMenu)
         registerCells()
+        
+        
+        // Home Category
         db.collection("HomeCategory").addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 print("Error retreiving snapshots \(error!)")
@@ -81,9 +118,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
         
+        // Home Sales of Week
+        
+        
+        
+        // Home 2 Buy 1 Pay Campaign
+        
     }
     private func registerCells(){
         categoryCollectionView.register(UINib(nibName: CategoryCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+        
+        salesCollectionView.register(UINib(nibName: SalesCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: SalesCollectionViewCell.identifier)
     }
 
 }
