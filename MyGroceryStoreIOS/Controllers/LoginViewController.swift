@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
     }
     func checkUserInfo(){
         if Auth.auth().currentUser != nil{
-            print(Auth.auth().currentUser?.uid)
+            print(Auth.auth().currentUser?.uid as Any)
         }
         let storyboard=UIStoryboard(name: "Main", bundle: nil)
         let vc=storyboard.instantiateViewController(identifier: "MainViewController")

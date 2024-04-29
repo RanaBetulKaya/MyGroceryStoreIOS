@@ -45,43 +45,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
 
-    var categories: [HomeCategoryModel] = [
-        .init(img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", type: "Indian", name: "Aloo")
-    ]
+    var categories: [HomeCategoryModel] = []
     
-    var populars: [SaleProductModel] = [
-        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
-        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
-        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
-        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
-        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36),
-        .init(campaign: "true", description: "%40 indirimli", img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ycQho5biF0TZLGOuDtp2jStnUNAqqzlXhg&s", name: "Islak Mendil", type: "cleaning", price: 36)
-    ]
-    // fetch data
+    var populars: [SaleProductModel] = []
     
-        
-        /*do {
-          let querySnapshot = try await db.collection("HomeCategory").getDocuments()
-          for document in querySnapshot.documents {
-              var category: HomeCategoryModel
-              let data = document.data()
-              let name = data["name"] as? String ?? ""
-              let type = data["type"] as? String ?? ""
-              let img_url = data["img_url"] as? String ?? ""
-              
-              category.img_url = img_url
-              category.name = name
-              category.type = type
-              
-              categories.append(category)
-          }
-        } catch {
-          print("Error getting documents: \(error)")
-        }*/
+    var campaign: [SaleProductModel] = []
+    
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
     @IBOutlet weak var salesCollectionView: UICollectionView!
-    
     @IBOutlet weak var sideMenuBtn: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,20 +81,53 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 let type = data["type"] as? String ?? ""
                 let img_url = data["img_url"] as? String ?? ""
                 
-                //category.img_url = img_url
-                //category.name = name
-                //category.type = type
-                
                 self.categories.append(HomeCategoryModel(img_url: img_url, type: type, name: name))
                 print("Veri cekti")
             }
+            self.categoryCollectionView.reloadData()
         }
         
         // Home Sales of Week
-        
+        db.collection("PopularProducts").addSnapshotListener{ querySnapshot, error in guard let snapshot = querySnapshot else{
+            print("Error retriving snapshots \(error!)")
+            return
+        }
+            for document in snapshot.documents{
+                print(document.data())
+                
+                let data = document.data()
+                let campaign = data["campaign"] as? String ?? ""
+                let description = data["description"] as? String ?? ""
+                let img_url = data["img_url"] as? String ?? ""
+                let name = data["name"] as? String ?? ""
+                let type = data["type"] as? String ?? ""
+                let price = data["price"] as? Int
+                
+                self.populars.append(SaleProductModel(campaign: campaign, description: description, img_url: img_url, name: name, type: type, price: price))
+                print ("indirim verisi çekildi")
+            }
+            self.salesCollectionView.reloadData()
+        }
         
         
         // Home 2 Buy 1 Pay Campaign
+        db.collection("AllProducts").whereField("campaign", isEqualTo: "true").addSnapshotListener{ querySnapshot, error in guard let snapshot = querySnapshot else{ print("Error retriving snapshots \(error!)")
+            return
+            }
+            for document in snapshot.documents{
+                print(document.data())
+                let data = document.data()
+                let campaign = data["campaign"] as? String ?? ""
+                let description = data["description"] as? String ?? ""
+                let img_url = data["img_url"] as? String ?? ""
+                let name = data["name"] as? String ?? ""
+                let type = data["type"] as? String ?? ""
+                let price = data["price"] as? Int
+                
+                self.campaign.append(SaleProductModel(campaign: campaign, description: description, img_url: img_url, name: name, type: type, price: price))
+            }
+            
+        }
         
     }
     private func registerCells(){
