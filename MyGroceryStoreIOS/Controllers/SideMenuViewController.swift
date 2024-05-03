@@ -24,7 +24,6 @@ class SideMenuViewController: UIViewController{
     var menu: [SideMenuModel] = [
         SideMenuModel(icon: UIImage(systemName: "house.fill")!, title: "Anasayfa"),
         SideMenuModel(icon: UIImage(systemName: "person.fill")!, title: "Profil"),
-        SideMenuModel(icon:UIImage(systemName: "circle.grid.2x2.fill")!, title: "Kategoriler"),
         SideMenuModel(icon: UIImage(systemName: "creditcard.fill")!, title: "Cüzdanım"),
         SideMenuModel(icon: UIImage(systemName: "basket")!, title: "Sepetim"),
         SideMenuModel(icon: UIImage(systemName: "arrow.right.to.line")!, title: "Çıkış")
