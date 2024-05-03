@@ -22,7 +22,7 @@ class SalesCollectionViewCell: UICollectionViewCell {
         salesImageView.kf.setImage(with: product.img_url?.asURL)
         salesNameLabel.text = product.name
         salesDescLabel.text = product.description
-        salesPriceLabel.text = product.formattedPrice
+        salesPriceLabel.text = product.formattedPrice+"₺" 
     }
     
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,11 +49,12 @@
                                 <color key="textColor" red="0.50712202113084115" green="0.50712202113084115" blue="0.50712202113084115" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36₺" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnj-GG-4Pi">
-                                <rect key="frame" x="146" y="259" width="97" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="136₺" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnj-GG-4Pi">
+                                <rect key="frame" x="139" y="259" width="97" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Pej-7U-HTi"/>
                                     <constraint firstAttribute="width" constant="97" id="c75-M6-JVz"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="102" id="yqU-Ow-h9Z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <color key="textColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -61,20 +63,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Mnj-GG-4Pi" firstAttribute="leading" secondItem="fGt-uO-U5O" secondAttribute="leading" constant="139" id="5af-D4-xr1"/>
                             <constraint firstAttribute="trailing" secondItem="DUB-zJ-iff" secondAttribute="trailing" constant="18" id="71g-Kv-McJ"/>
                             <constraint firstItem="smk-to-Pu0" firstAttribute="leading" secondItem="fGt-uO-U5O" secondAttribute="leading" constant="8" id="AIL-7t-oF9"/>
                             <constraint firstAttribute="trailing" secondItem="smk-to-Pu0" secondAttribute="trailing" constant="8" id="E0G-pL-JDG"/>
-                            <constraint firstAttribute="trailing" secondItem="Mnj-GG-4Pi" secondAttribute="trailing" constant="18" id="ElC-ng-J0Q"/>
                             <constraint firstItem="DUB-zJ-iff" firstAttribute="leading" secondItem="fGt-uO-U5O" secondAttribute="leading" constant="8" id="Mc9-cX-b27"/>
                             <constraint firstItem="smk-to-Pu0" firstAttribute="top" secondItem="4sy-Fe-gAj" secondAttribute="bottom" constant="44" id="QbS-Hy-e1f"/>
+                            <constraint firstItem="Mnj-GG-4Pi" firstAttribute="top" secondItem="DUB-zJ-iff" secondAttribute="bottom" constant="15" id="Sye-Kg-RJw"/>
                             <constraint firstAttribute="trailing" secondItem="4sy-Fe-gAj" secondAttribute="trailing" constant="8" id="bEG-Hv-Z3T"/>
+                            <constraint firstAttribute="trailing" secondItem="Mnj-GG-4Pi" secondAttribute="trailing" constant="21" id="dxs-xT-b8L"/>
                             <constraint firstAttribute="bottom" secondItem="Mnj-GG-4Pi" secondAttribute="bottom" constant="11" id="eBY-Ft-3fN"/>
                             <constraint firstItem="4sy-Fe-gAj" firstAttribute="top" secondItem="fGt-uO-U5O" secondAttribute="top" constant="12" id="hsU-3E-See"/>
                             <constraint firstItem="4sy-Fe-gAj" firstAttribute="leading" secondItem="fGt-uO-U5O" secondAttribute="leading" constant="8" id="lV1-9w-71C"/>
-                            <constraint firstItem="Mnj-GG-4Pi" firstAttribute="leading" secondItem="fGt-uO-U5O" secondAttribute="leading" constant="146" id="on4-Ab-89k"/>
                             <constraint firstAttribute="bottom" secondItem="smk-to-Pu0" secondAttribute="bottom" constant="35" id="rHc-R6-bY7"/>
                             <constraint firstItem="Mnj-GG-4Pi" firstAttribute="top" secondItem="DUB-zJ-iff" secondAttribute="bottom" constant="15" id="sQd-TQ-2Rp"/>
                             <constraint firstItem="Mnj-GG-4Pi" firstAttribute="top" secondItem="DUB-zJ-iff" secondAttribute="bottom" constant="15" id="x8q-6X-k6a"/>
+                            <constraint firstAttribute="bottom" secondItem="Mnj-GG-4Pi" secondAttribute="bottom" constant="11" id="z77-GZ-Dlj"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
