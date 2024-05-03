@@ -46,7 +46,7 @@ class RegistrationViewController: UIViewController {
             }
         }
         let storyboard=UIStoryboard(name: "Main", bundle: nil)
-        let vc=storyboard.instantiateViewController(identifier: "homeView")
+        let vc=storyboard.instantiateViewController(identifier: "signInView")
         vc.modalPresentationStyle = .overFullScreen
         present(vc,animated: true)
     }
