@@ -19,6 +19,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return categories.count
         case salesCollectionView:
             return populars.count
+        case campaignCollectionView:
+            return campaign.count
         default: return 0
         }
         
@@ -35,6 +37,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SalesCollectionViewCell.identifier, for: indexPath) as! SalesCollectionViewCell
             cell.setup(product: populars[indexPath.row])
             return cell
+        case campaignCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CampaignCollectionViewCell.identifier, for: indexPath) as! CampaignCollectionViewCell
+            
+            cell.setup(product: campaign[indexPath.row])
+            return cell
         default: return UICollectionViewCell()
         }
         
@@ -43,7 +50,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+        vc?.product = campaign[indexPath.row]
+    }
 
     var categories: [HomeCategoryModel] = []
     
@@ -54,6 +64,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
     @IBOutlet weak var salesCollectionView: UICollectionView!
+    
+    @IBOutlet weak var campaignCollectionView: UICollectionView!
+    
     @IBOutlet weak var sideMenuBtn: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +74,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Do any additional setup after loading the view.
         sideMenuBtn.target = revealViewController()
         sideMenuBtn.action = #selector(revealViewController()?.revealSideMenu)
+        
+        campaignCollectionView.dataSource=self
+        campaignCollectionView.delegate=self
+        
         registerCells()
         
         
@@ -126,7 +143,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 self.campaign.append(SaleProductModel(campaign: campaign, description: description, img_url: img_url, name: name, type: type, price: price))
             }
-            
+            self.campaignCollectionView.reloadData()
         }
         
     }
@@ -134,7 +151,27 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         categoryCollectionView.register(UINib(nibName: CategoryCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         
         salesCollectionView.register(UINib(nibName: SalesCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: SalesCollectionViewCell.identifier)
+        
+        campaignCollectionView.register(UINib(nibName: CampaignCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CampaignCollectionViewCell.identifier)
     }
+    
+    /*func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+        vc?.product = campaign[indexPath.row]
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    */
+    
+    
+    /*func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+                // Ürün adını ve diğer gerekli bilgileri detay view controller'a geçir
+                detailVC.product = products[indexPath.item]
+                self.navigationController?.pushViewController(detailVC, animated: true)
+            }
+        }*/
+
 
 }
 
