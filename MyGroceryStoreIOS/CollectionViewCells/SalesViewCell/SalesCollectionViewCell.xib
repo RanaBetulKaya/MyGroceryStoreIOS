@@ -49,7 +49,7 @@
                                 <color key="textColor" red="0.50712202113084115" green="0.50712202113084115" blue="0.50712202113084115" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="136₺" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnj-GG-4Pi">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="136₺" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnj-GG-4Pi">
                                 <rect key="frame" x="139" y="259" width="97" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Pej-7U-HTi"/>

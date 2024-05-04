@@ -11,50 +11,7 @@ import FirebaseFirestore
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     private var db = Firestore.firestore()
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        switch collectionView{
-        case categoryCollectionView:
-            return categories.count
-        case salesCollectionView:
-            return populars.count
-        case campaignCollectionView:
-            return campaign.count
-        default: return 0
-        }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        switch collectionView{
-        case categoryCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-            cell.setup(category: categories[indexPath.row])
-            return cell
-        case salesCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SalesCollectionViewCell.identifier, for: indexPath) as! SalesCollectionViewCell
-            cell.setup(product: populars[indexPath.row])
-            return cell
-        case campaignCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CampaignCollectionViewCell.identifier, for: indexPath) as! CampaignCollectionViewCell
-            
-            cell.setup(product: campaign[indexPath.row])
-            return cell
-        default: return UICollectionViewCell()
-        }
-        
-        
-        
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
-        vc?.product = campaign[indexPath.row]
-    }
-
+     
     var categories: [HomeCategoryModel] = []
     
     var populars: [SaleProductModel] = []
@@ -77,6 +34,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         campaignCollectionView.dataSource=self
         campaignCollectionView.delegate=self
+        
+        salesCollectionView.delegate=self
+        salesCollectionView.dataSource=self
+        
+        categoryCollectionView.delegate=self
+        categoryCollectionView.dataSource=self
         
         registerCells()
         
@@ -171,7 +134,53 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.navigationController?.pushViewController(detailVC, animated: true)
             }
         }*/
-
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        switch collectionView{
+        case categoryCollectionView:
+            return categories.count
+        case salesCollectionView:
+            return populars.count
+        case campaignCollectionView:
+            return campaign.count
+        default: return 0
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       
+       switch collectionView{
+       case categoryCollectionView:
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+           cell.setup(category: categories[indexPath.row])
+           return cell
+       case salesCollectionView:
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SalesCollectionViewCell.identifier, for: indexPath) as! SalesCollectionViewCell
+           cell.setup(product: populars[indexPath.row])
+           return cell
+       case campaignCollectionView:
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CampaignCollectionViewCell.identifier, for: indexPath) as! CampaignCollectionViewCell
+           
+           cell.setup(product: campaign[indexPath.row])
+           return cell
+       default: return UICollectionViewCell()
+       }
+       
+       
+       
+       
+   }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == salesCollectionView { // Eğer ürün hakkında özet gösteren collection view ise
+            // Seçilen ürünün detaylarını göstermek için DetailViewController'a geçiş yap
+            let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+            // DetailViewController'a gönderilecek verileri belirle (örneğin, seçilen ürünün ID'si gibi)
+            detailVC.product = populars[indexPath.item] // Örnek olarak products dizisinden ürün ID'sini gönderiyoruz
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
 
 }
 

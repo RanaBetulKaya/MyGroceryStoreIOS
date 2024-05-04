@@ -107,7 +107,7 @@
                 <outlet property="CampaignNameLabel" destination="7GW-yv-FVc" id="kbf-DD-0O3"/>
                 <outlet property="CampaignPriceLabel" destination="E5J-cU-X4i" id="3L0-K9-MAe"/>
             </connections>
-            <point key="canvasLocation" x="222.13740458015266" y="71.83098591549296"/>
+            <point key="canvasLocation" x="172" y="71"/>
         </collectionViewCell>
     </objects>
     <resources>
