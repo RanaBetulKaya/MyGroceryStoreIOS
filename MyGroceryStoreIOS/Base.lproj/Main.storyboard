@@ -329,6 +329,44 @@
                                     <navigationItem title="Cüzdanım" id="mA6-Ci-mjf"/>
                                 </items>
                             </navigationBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="myorder" translatesAutoresizingMaskIntoConstraints="NO" id="dCc-UT-thi">
+                                <rect key="frame" x="68" y="147" width="257" height="231"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Toplam Bakiye:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bta-2x-7Tw">
+                                <rect key="frame" x="33" y="440" width="145" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2v-C9-jId">
+                                <rect key="frame" x="193" y="440" width="81" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Eklemek istediğiniz tutarı giriniz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S77-bl-aP7">
+                                <rect key="frame" x="16" y="521" width="237" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94604410279999995" green="0.94604410279999995" blue="0.94604410279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77i-nY-zH1">
+                                <rect key="frame" x="283" y="521" width="94" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Para Ekle">
+                                    <color key="baseBackgroundColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addMoneyBtn:" destination="8V8-8z-va1" eventType="touchUpInside" id="mby-hz-U2f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xkr-ic-65U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -340,12 +378,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addingAmountInput" destination="S77-bl-aP7" id="JBv-W8-kYf"/>
                         <outlet property="sideMenuBtn" destination="N2x-hc-1qu" id="VE8-Vz-tbz"/>
+                        <outlet property="viewBudgetLabel" destination="m2v-C9-jId" id="OvI-9f-bL8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEt-mM-nhh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4789" y="746"/>
+            <point key="canvasLocation" x="4788.5496183206105" y="745.77464788732402"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="ZJ7-3U-8Yt">
@@ -482,7 +522,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUt-rx-nEg">
                                                 <rect key="frame" x="0.0" y="0.0" width="392" height="350"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Haftanın İndirimleri" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTn-3r-J9k">
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Haftanın İndirimleri" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTn-3r-J9k">
                                                         <rect key="frame" x="8" y="8" width="175" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -517,6 +557,7 @@
                                                     </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="392" id="2jc-z7-sjg"/>
                                                     <constraint firstAttribute="height" constant="350" id="8BB-0c-8NF"/>
@@ -568,7 +609,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RG-nu-z76">
                                                 <rect key="frame" x="0.0" y="575" width="392" height="257"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Al 1 Öde Kampanyası" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zl2-9s-dM7">
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Al 1 Öde Kampanyası" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zl2-9s-dM7">
                                                         <rect key="frame" x="8" y="0.0" width="208" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
@@ -987,6 +1028,7 @@
     <resources>
         <image name="key" width="512" height="512"/>
         <image name="line.3.horizontal" catalog="system" width="32" height="32"/>
+        <image name="myorder" width="250" height="250"/>
         <image name="placedorder" width="626" height="626"/>
         <image name="registration" width="512" height="512"/>
         <image name="user_logout" width="512" height="512"/>
