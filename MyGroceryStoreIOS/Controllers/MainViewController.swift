@@ -99,14 +99,13 @@ extension MainViewController: SideMenuViewControllerDelegate {
             // Profile
             self.showViewController(viewController: UINavigationController.self, storyboardId: "ProfileNavID")
         case 2:
-            // Categories
-            self.showViewController(viewController: UINavigationController.self, storyboardId: "CategoryNavID")
-        case 3:
             // My Wallet
             self.showViewController(viewController: UINavigationController.self, storyboardId: "MyWalletID")
-        case 4:
+        case 3:
             // My Cart
             self.showViewController(viewController: UINavigationController.self, storyboardId: "MyCartID")
+        case 4:
+            self.showViewController(viewController: UINavigationController.self, storyboardId: "LogoutId")
         default:
             break
         }
