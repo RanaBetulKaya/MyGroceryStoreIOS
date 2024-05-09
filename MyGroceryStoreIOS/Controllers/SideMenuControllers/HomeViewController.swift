@@ -172,13 +172,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
        
    }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    /*func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == salesCollectionView { // Eğer ürün hakkında özet gösteren collection view ise
             // Seçilen ürünün detaylarını göstermek için DetailViewController'a geçiş yap
             let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
             // DetailViewController'a gönderilecek verileri belirle (örneğin, seçilen ürünün ID'si gibi)
             detailVC.product = populars[indexPath.item] // Örnek olarak products dizisinden ürün ID'sini gönderiyoruz
             navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }*/
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == categoryCollectionView {
+            
+        }else{
+            let controller = DetailViewController.instantiate()
+            controller.product = collectionView == salesCollectionView ? populars[indexPath.row] : campaign[indexPath.row]
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
 
