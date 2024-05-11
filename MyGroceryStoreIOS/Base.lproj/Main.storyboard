@@ -554,7 +554,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkh-4f-dU0">
                                 <rect key="frame" x="16" y="103" width="361" height="715"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xlr-KN-1ck">
                                     <size key="itemSize" width="352" height="138"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -571,6 +571,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gZ0-Gl-pXz">
                                                     <rect key="frame" x="8" y="8" width="122" height="122"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="122" id="SEb-mp-iAW"/>
                                                         <constraint firstAttribute="height" constant="122" id="jcc-iK-VhX"/>
@@ -612,6 +613,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="5b4-mH-weU" secondAttribute="trailing" constant="31" id="01H-G9-Rx4"/>
                                                 <constraint firstAttribute="bottom" secondItem="jdq-6t-4hu" secondAttribute="bottom" constant="8" id="4Vs-zi-YcI"/>
@@ -629,8 +631,21 @@
                                                 <constraint firstItem="5b4-mH-weU" firstAttribute="leading" secondItem="gZ0-Gl-pXz" secondAttribute="trailing" constant="15" id="fef-47-9dF"/>
                                                 <constraint firstItem="jdq-6t-4hu" firstAttribute="top" secondItem="ZAT-WY-Wep" secondAttribute="bottom" constant="2" id="nGA-V7-Mlf"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <size key="customSize" width="352" height="138"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="detailBtn" destination="jdq-6t-4hu" id="1xC-il-V6V"/>
                                             <outlet property="productDescTextView" destination="ZAT-WY-Wep" id="Zc1-UZ-qKp"/>
@@ -642,7 +657,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gs3-N6-B3l"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="gkh-4f-dU0" firstAttribute="leading" secondItem="hr5-xF-9NV" secondAttribute="leadingMargin" id="8Gm-PH-frc"/>
                             <constraint firstAttribute="bottomMargin" secondItem="gkh-4f-dU0" secondAttribute="bottom" id="GaH-Jg-XmC"/>
