@@ -742,6 +742,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addToCart:" destination="NqD-pu-VvH" eventType="touchUpInside" id="7jX-bo-LZm"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0f-WV-nAa">
                                         <rect key="frame" x="65" y="12" width="48" height="36"/>
@@ -781,7 +784,7 @@
                         <outlet property="detailDescTextField" destination="odi-k1-dMy" id="V6b-11-B8q"/>
                         <outlet property="detailImageView" destination="6SB-XX-Nhv" id="hfZ-am-Vt4"/>
                         <outlet property="detailPriceLbl" destination="Dgh-wi-pkf" id="SWE-VL-63a"/>
-                        <outlet property="productCount" destination="J0f-WV-nAa" id="GFY-ul-1qL"/>
+                        <outlet property="productCount" destination="J0f-WV-nAa" id="Dwp-ki-V4R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ukv-sU-ySJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class DetailViewController: UIViewController {
 
@@ -13,10 +15,17 @@ class DetailViewController: UIViewController {
     
     var productCountInt = 1
     
+    var productDetail: MyCartModel!
+    
+    var db = Firestore.firestore()
+    
     @IBOutlet weak var productCount: UILabel!
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var detailPriceLbl: UILabel!
     @IBOutlet weak var detailDescTextField: UITextView!
+    @IBAction func addToCart(_ sender: Any) {
+        addToCart()
+    }
     @IBAction func addBtn(_ sender: Any) {
         if productCountInt < 10{
             productCountInt+=1
@@ -51,5 +60,29 @@ class DetailViewController: UIViewController {
         productCount.text = "\(productCountInt)"
     }
     
+    func addToCart() {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            print("Current user not found")
+            return
+        }
+        print(currentUserID)
+        let currentUserRef = db.collection("CurrentUser").document(currentUserID)
+        let addToCartRef = currentUserRef.collection("AddToCart").document()
+
+        let data: [String: Any] = [
+            "productName": product.name ?? "",
+            "totalQuantity": productCountInt,
+            "totalPrice": (product.price!) * productCountInt
+        ]
+
+        addToCartRef.setData(data) { error in
+            if let error = error {
+                print("Error adding document to cart: \(error)")
+            } else {
+                print("Document added to cart successfully")
+            }
+        }
+    }
+
 
 }
