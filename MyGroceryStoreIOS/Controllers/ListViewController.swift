@@ -8,7 +8,22 @@
 import UIKit
 import FirebaseFirestore
 
-class ListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ProductListViewCellDelegate {
+    func didTapDetailButton(product: SaleProductModel) {
+        let destinationViewController = DetailViewController()
+        
+        if let destinationViewController = navigationController?.viewControllers.first(where: { $0 is DetailViewController }) as? DetailViewController {
+            
+            destinationViewController.modalPresentationStyle = .fullScreen
+            // Geri butonu
+            let backButton = UIBarButtonItem()
+            backButton.title = "Geri"
+            backButton.tintColor = UIColor.systemGreen
+            self.navigationItem.backBarButtonItem = backButton
+            destinationViewController.product = product
+        }
+    }
+    
     
     @IBOutlet weak var productListCollectionView: UICollectionView!
     
@@ -55,6 +70,8 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = productListCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductListCollectionViewCell", for: indexPath) as! ProductListCollectionViewCell
         cell.setup(with: productList[indexPath.row])
+        cell.isUserInteractionEnabled = true
+        cell.delegate = self
         return cell
     }
 }

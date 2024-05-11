@@ -607,6 +607,9 @@
                                                     <color key="tintColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="arrowshape.forward.fill" catalog="system"/>
+                                                    <connections>
+                                                        <segue destination="NqD-pu-VvH" kind="show" id="Ewh-DT-jwq"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -629,6 +632,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="352" height="138"/>
                                         <connections>
+                                            <outlet property="detailBtn" destination="jdq-6t-4hu" id="1xC-il-V6V"/>
                                             <outlet property="productDescTextView" destination="ZAT-WY-Wep" id="Zc1-UZ-qKp"/>
                                             <outlet property="productImageView" destination="gZ0-Gl-pXz" id="s4h-5p-WyM"/>
                                             <outlet property="productNameLbl" destination="5b4-mH-weU" id="oSS-rP-K7t"/>
@@ -654,6 +658,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ege-xa-RJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5724" y="-818"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="I6t-H6-nkx">
+            <objects>
+                <viewController id="NqD-pu-VvH" customClass="DetailViewController" customModule="MyGroceryStoreIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="boA-3T-8pf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jYQ-nA-0gs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7hM-gR-1Rl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ukv-sU-ySJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6578" y="-818"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E5X-ML-zBn">
