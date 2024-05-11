@@ -730,6 +730,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addBtn:" destination="NqD-pu-VvH" eventType="touchUpInside" id="HmF-IV-3M0"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GkA-2I-g2D">
                                         <rect key="frame" x="269" y="12" width="114" height="35"/>
@@ -755,6 +758,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="removeBtn:" destination="NqD-pu-VvH" eventType="touchUpInside" id="yzY-dn-wBX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.69054240479999995" green="1" blue="0.60931649320000003" alpha="0.7383847268" colorSpace="custom" customColorSpace="displayP3"/>
@@ -775,6 +781,7 @@
                         <outlet property="detailDescTextField" destination="odi-k1-dMy" id="V6b-11-B8q"/>
                         <outlet property="detailImageView" destination="6SB-XX-Nhv" id="hfZ-am-Vt4"/>
                         <outlet property="detailPriceLbl" destination="Dgh-wi-pkf" id="SWE-VL-63a"/>
+                        <outlet property="productCount" destination="J0f-WV-nAa" id="GFY-ul-1qL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ukv-sU-ySJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
