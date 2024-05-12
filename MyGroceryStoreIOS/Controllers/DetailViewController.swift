@@ -23,6 +23,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var detailPriceLbl: UILabel!
     @IBOutlet weak var detailDescTextField: UITextView!
+    @IBAction func commentBtn(_ sender: Any) {
+        
+    }
     @IBAction func addToCart(_ sender: Any) {
         addToCart()
     }
@@ -51,9 +54,9 @@ class DetailViewController: UIViewController {
         detailPriceLbl.text = product.formattedPrice + " ₺"
         detailDescTextField.text = product.description
         showProductCount()
-        //print(product.name)
+        print(product.name)
         print("Detail girdi")
-        
+        print(product.documentID as Any)
         // Do any additional setup after loading the view.
     }
     func showProductCount () {

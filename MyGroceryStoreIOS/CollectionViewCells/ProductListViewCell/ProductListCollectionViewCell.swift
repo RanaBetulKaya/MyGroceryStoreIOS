@@ -36,7 +36,7 @@ class ProductListCollectionViewCell: UICollectionViewCell {
     }
     @objc func detailButtonTapped() {
             // Butona tıklandığında burası çalışacak
-        let product = SaleProductModel(campaign: product.campaign, description: product.description, img_url: product.img_url, name: product.name, type: product.type, price: product.price)
+        let product = SaleProductModel(campaign: product.campaign, description: product.description, img_url: product.img_url, name: product.name, type: product.type, price: product.price, documentID: product.documentID)
             delegate?.didTapDetailButton(product: product)
         }
     

@@ -14,6 +14,7 @@ struct SaleProductModel{
     var name: String?
     var type: String?
     var price: Int?
+    var documentID: String!
     
     var formattedPrice:String{
         return String(format: "%d", price ?? 0)

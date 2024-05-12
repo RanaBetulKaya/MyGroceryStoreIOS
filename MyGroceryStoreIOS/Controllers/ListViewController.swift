@@ -49,6 +49,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 for document in snapshot.documents{
                     print(document.data())
                     let data = document.data()
+                    let documentID = document.documentID
                     let campaign = data["campaign"] as? String ?? ""
                     let description = data["description"] as? String ?? ""
                     let img_url = data["img_url"] as? String ?? ""
@@ -56,7 +57,8 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let type = data["type"] as? String ?? ""
                     let price = data["price"] as? Int
                     print(data["name"])
-                    self.productList.append(SaleProductModel(campaign: campaign, description: description, img_url: img_url, name: name, type: type, price: price))
+                    print(documentID)
+                    self.productList.append(SaleProductModel(campaign: campaign, description: description, img_url: img_url, name: name, type: type, price: price, documentID: documentID))
                 }
                 self.productListCollectionView.reloadData()
             //}
