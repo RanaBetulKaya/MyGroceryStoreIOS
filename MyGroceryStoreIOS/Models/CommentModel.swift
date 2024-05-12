@@ -10,4 +10,5 @@ import Foundation
 struct CommentModel{
     var userName: String!
     var productDesc: String!
+    var commentID: String!
 }
