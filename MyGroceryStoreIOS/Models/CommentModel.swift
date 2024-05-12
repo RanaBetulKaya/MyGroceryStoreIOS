@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct CommentModel{
+    var userName: String!
+    var productDesc: String!
+}

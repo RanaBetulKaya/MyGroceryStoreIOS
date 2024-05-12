@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class DetailViewController: UIViewController {
-
+    
     var product: SaleProductModel!
     
     var productCountInt = 1
@@ -24,7 +24,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailPriceLbl: UILabel!
     @IBOutlet weak var detailDescTextField: UITextView!
     @IBAction func commentBtn(_ sender: Any) {
-        
     }
     @IBAction func addToCart(_ sender: Any) {
         addToCart()
@@ -71,13 +70,13 @@ class DetailViewController: UIViewController {
         print(currentUserID)
         let currentUserRef = db.collection("CurrentUser").document(currentUserID)
         let addToCartRef = currentUserRef.collection("AddToCart").document()
-
+        
         let data: [String: Any] = [
             "productName": product.name ?? "",
             "totalQuantity": productCountInt,
             "totalPrice": (product.price!) * productCountInt
         ]
-
+        
         addToCartRef.setData(data) { error in
             if let error = error {
                 print("Error adding document to cart: \(error)")
@@ -87,5 +86,17 @@ class DetailViewController: UIViewController {
         }
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "goToCommentsSegue" {
+                if let destinationViewController = segue.destination as? CommentViewController {
+                    destinationViewController.product = product.documentID
+                    let backButton = UIBarButtonItem()
+                    backButton.title = "Geri"
+                    backButton.tintColor = UIColor.systemGreen
+                    self.navigationItem.backBarButtonItem = backButton
+                }
+            }
+        }
 }
+
+
