@@ -18,6 +18,8 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var sideMenuBtn: UIBarButtonItem!
     
+    @IBOutlet weak var totalAmountLabel: UILabel!
+    
     func didTapDeleteButton(product: MyCartModel) {
         print("Fonk' a  girdikkkkkk")
         print("ürün id: " ,product.cartProductID)
@@ -27,10 +29,15 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
             } else{
                 self.showAlertMessage(title: "", message: "Ürün sepetten çıkarıldı.")
                 // cartProducts dizisinden ürünü sil
-                           if let index = self.cartProducts.firstIndex(where: { $0.cartProductID == product.cartProductID }) {
-                               self.cartProducts.remove(at: index)
-                           }
-                           
+                                if let index = self.cartProducts.firstIndex(where: { $0.cartProductID == product.cartProductID }) {
+                                    let removedProduct = self.cartProducts.remove(at: index)
+                                    
+                                    // totalAmount'ı güncelle
+                                    if let currentTotal = Int(self.totalAmountLabel.text ?? "0") {
+                                        let newTotal = currentTotal - (removedProduct.totalPrice ?? 0)
+                                        self.totalAmountLabel.text = "\(newTotal)"
+                                    }
+                                }
                            // Collection view'i güncelle
                            self.cartCollectionView.reloadData()
                            print("ürün silindi ve collection view güncellendi")
@@ -53,7 +60,9 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     func fetchProductData(){
         // Veri çekme
-        db.collection("CurrentUser").document(Auth.auth().currentUser!.uid).collection("AddToCart").addSnapshotListener{ querySnapshot, error in guard let snapshot = querySnapshot else { print("Error retriving snapshots \(error!)")
+        
+        var totalAmount = 0
+        db.collection("CurrentUser").document(Auth.auth().currentUser!.uid).collection("AddToCart").getDocuments{ querySnapshot, error in guard let snapshot = querySnapshot else { print("Error retriving snapshots \(error!)")
             return
         }
             print("vt bağlandı")
@@ -64,13 +73,14 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
                 let productName = data["productName"] as? String ?? ""
                 let totalQuantity = data["totalQuantity"] as? Int ?? 0
                 let totalPrice = data["totalPrice"] as? Int ?? 0
+                totalAmount+=totalPrice
                 if !self.cartProducts.contains(where: { $0.cartProductID == cartProductID }) {
                 self.cartProducts.append(MyCartModel(productName: productName, totalPrice: totalPrice, totalQuantity: totalQuantity, cartProductID: cartProductID))
                 }
                 
                 print("for içinde")
             }
-            
+            self.totalAmountLabel.text = "\(totalAmount)"
             self.cartCollectionView.reloadData()
         //}
         }
