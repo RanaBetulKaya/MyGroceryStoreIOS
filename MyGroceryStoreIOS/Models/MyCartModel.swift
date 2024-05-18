@@ -10,5 +10,5 @@ import Foundation
 struct MyCartModel{
     var productName: String?
     var totalPrice: Int?
-    var totalQuantity: String?
+    var totalQuantity: Int?
 }

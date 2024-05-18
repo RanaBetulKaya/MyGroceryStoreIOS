@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8334C34F2BF2245C00DCD78C /* CartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8334C34E2BF2245C00DCD78C /* CartCollectionViewCell.swift */; };
 		8352488E2BEE14FD00205B18 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8352488D2BEE14FD00205B18 /* CategoryCollectionViewCell.swift */; };
 		835A88262BE5892900B6C47C /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835A88252BE5892900B6C47C /* LogoutViewController.swift */; };
 		83651D622BED388700E774B5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83651D612BED388700E774B5 /* UIViewController+Extension.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8334C34E2BF2245C00DCD78C /* CartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCollectionViewCell.swift; sourceTree = "<group>"; };
 		8352488D2BEE14FD00205B18 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		835A88252BE5892900B6C47C /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		83651D612BED388700E774B5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -182,6 +184,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8334C34D2BF2244100DCD78C /* CartViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8334C34E2BF2245C00DCD78C /* CartCollectionViewCell.swift */,
+			);
+			path = CartViewCell;
+			sourceTree = "<group>";
+		};
 		8352488C2BEE14E100205B18 /* CategoryViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +325,7 @@
 		83C91BBA2BC30E7F00EE715F /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				8334C34D2BF2244100DCD78C /* CartViewCell */,
 				83C6EBD32BF012D800680F64 /* CommentViewCell */,
 				83E4D75A2BEEBB12004D5AE1 /* ProductListViewCell */,
 				8352488C2BEE14E100205B18 /* CategoryViewCell */,
@@ -513,6 +524,7 @@
 				83C6EBCE2BEF94EB00680F64 /* DetailViewController.swift in Sources */,
 				83C91BB92BC2F42D00EE715F /* MyCartViewController.swift in Sources */,
 				83F216DC2BC2BA0A0081FFDE /* ProfileViewController.swift in Sources */,
+				8334C34F2BF2245C00DCD78C /* CartCollectionViewCell.swift in Sources */,
 				83AC86532BEE556A0017C6C6 /* ListViewController.swift in Sources */,
 				83E4D75C2BEEBB55004D5AE1 /* ProductListCollectionViewCell.swift in Sources */,
 				83C6EBD02BEFE60C00680F64 /* MyCartModel.swift in Sources */,
