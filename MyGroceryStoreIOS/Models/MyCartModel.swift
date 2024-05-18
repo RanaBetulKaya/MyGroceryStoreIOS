@@ -11,4 +11,5 @@ struct MyCartModel{
     var productName: String?
     var totalPrice: Int?
     var totalQuantity: Int?
+    var cartProductID: String?
 }

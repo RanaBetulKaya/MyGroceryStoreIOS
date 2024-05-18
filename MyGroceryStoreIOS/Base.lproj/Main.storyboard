@@ -1125,6 +1125,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="deleteBtn" destination="7Mi-RJ-STA" id="0Qg-gE-w3I"/>
                                             <outlet property="productNameLbl" destination="OHk-bA-RRm" id="4ix-5j-hAT"/>
                                             <outlet property="productQuantityLbl" destination="s6L-Jb-l2i" id="EWe-8R-QO0"/>
                                             <outlet property="totalPriceLbl" destination="zds-mb-sWz" id="Pgj-2e-azf"/>
