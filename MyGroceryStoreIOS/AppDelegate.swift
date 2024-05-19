@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseCore
 import FirebaseAppCheck
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let providerFactory = AppCheckDebugProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
         FirebaseApp.configure()
+        
+        // Bildirim izinlerini isteme
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                    if granted {
+                        print("İzin verildi.")
+                    } else {
+                        print("İzin reddedildi.")
+                    }
+                }
+        
         return true
     }
 

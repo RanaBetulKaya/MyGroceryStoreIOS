@@ -20,6 +20,10 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var totalAmountLabel: UILabel!
     
+    @IBAction func buynowBtn(_ sender: Any) {
+        //sendNotification()
+        clearCart()
+    }
     func didTapDeleteButton(product: MyCartModel) {
         print("Fonk' a  girdikkkkkk")
         print("ürün id: " ,product.cartProductID)
@@ -97,5 +101,58 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
         return cell
     }
     
+    func clearCart() {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        let cartCollectionRef = db.collection("CurrentUser").document(userID).collection("AddToCart")
+        
+        cartCollectionRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                self.showAlertMessage(title: "Hata", message: "Sepet boşaltılamadı. Tekrar deneyiniz.")
+            } else {
+                let batch = self.db.batch()
+                for document in querySnapshot!.documents {
+                    batch.deleteDocument(document.reference)
+                }
+                batch.commit { (error) in
+                    if let error = error {
+                        print("Error deleting documents: \(error)")
+                        self.showAlertMessage(title: "Hata", message: "Sepet boşaltılamadı. Tekrar deneyiniz.")
+                    } else {
+                        self.showAlertMessage(title: "", message: "Sepet başarıyla boşaltıldı.")
+                        self.cartProducts.removeAll()
+                        self.totalAmountLabel.text = "0"
+                        self.cartCollectionView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    func decreaseBudget(){
+        
+    }
+    /*@objc func sendNotification() {
+            // Bildirim içeriğini oluşturma
+            let content = UNMutableNotificationContent()
+            content.title = "Merhaba"
+            content.body = "Bu bir bildirim mesajıdır."
+            content.sound = UNNotificationSound.default
+            
+            // Bildirim tetikleyicisini oluşturma (örneğin, 5 saniye sonra tetiklensin)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            
+            // Bildirim talebini oluşturma
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            
+            // Bildirimi planlama
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Bildirim gönderilemedi: \(error.localizedDescription)")
+                } else {
+                    print("Bildirim gönderildi.")
+                }
+            }
+        }*/
 
 }

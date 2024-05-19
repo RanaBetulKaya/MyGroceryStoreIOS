@@ -1157,6 +1157,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Sepeti Onayla">
                                             <color key="baseBackgroundColor" red="0.34509804840000002" green="0.64313727620000005" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="buynowBtn:" destination="QhE-1R-iD5" eventType="touchUpInside" id="cOt-EE-TBl"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="₺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbD-gt-VT5">
                                         <rect key="frame" x="190" y="15" width="12" height="24"/>
