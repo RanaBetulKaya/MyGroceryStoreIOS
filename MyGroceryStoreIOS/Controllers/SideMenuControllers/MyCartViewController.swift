@@ -8,12 +8,14 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseDatabase
 
 class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CartCollectionViewCellDelegate {
     
     var db = Firestore.firestore()
     var cartProducts: [MyCartModel] = []
-
+    var ref: DatabaseReference!
+    
     @IBOutlet weak var cartCollectionView: UICollectionView!
     
     @IBOutlet weak var sideMenuBtn: UIBarButtonItem!
@@ -23,6 +25,7 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func buynowBtn(_ sender: Any) {
         //sendNotification()
         clearCart()
+        decreaseBudget()
     }
     func didTapDeleteButton(product: MyCartModel) {
         print("Fonk' a  girdikkkkkk")
@@ -61,6 +64,8 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
         cartCollectionView.dataSource=self
         
         fetchProductData()
+        
+        ref = Database.database().reference(fromURL: "https://my-grocery-store-c4018-default-rtdb.europe-west1.firebasedatabase.app/")
     }
     func fetchProductData(){
         // Veri çekme
@@ -130,6 +135,24 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     func decreaseBudget(){
+        let totalAmountInt = Int(self.totalAmountLabel.text ?? "0")
+        ref.child("Users").child(Auth.auth().currentUser!.uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            if let userData = snapshot.value as? [String: Any]{
+                let budget: Int = userData["budget"] as? Int ?? 0
+                let newBudget = budget - totalAmountInt!
+                
+                let userData = ["budget": newBudget]
+                print("fonk içinde yeni bütçe: \(newBudget)")
+                
+                self.ref.child("Users").child(Auth.auth().currentUser!.uid).updateChildValues(userData){(error, ref) in
+                    if let error = error{
+                        print("Firebase veri güncelleme hatası:\(error.localizedDescription)")
+                    } else{
+                        print("Kullanıcı bilgileri güncellendi")
+                    }
+                }
+            }
+        }){(error) in print("Firebase veri alımı başarısız: \(error.localizedDescription)")}
         
     }
     /*@objc func sendNotification() {
