@@ -11,7 +11,7 @@ import FirebaseAppCheck
 import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate  {
 
     
 
@@ -21,18 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppCheck.setAppCheckProviderFactory(providerFactory)
         FirebaseApp.configure()
         
-        // Bildirim izinlerini isteme
+        // Bildirim iznini isteme
+                UNUserNotificationCenter.current().delegate = self
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-                    if granted {
-                        print("İzin verildi.")
+                    if let error = error {
+                        print("Bildirim izni alınamadı: \(error.localizedDescription)")
+                    } else if granted {
+                        print("Bildirim izni verildi.")
                     } else {
-                        print("İzin reddedildi.")
+                        print("Bildirim izni reddedildi.")
                     }
                 }
         
         return true
     }
-
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                    willPresent notification: UNNotification,
+                                    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            completionHandler([.alert, .sound, .badge])
+        }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

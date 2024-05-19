@@ -159,6 +159,7 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
                     }
                     self.clearCart()
                     self.showAlertMessage(title: "Siparişiniz Alındı", message: "Siparişiniz başarılı bir şekilde alındı. Bizi tercih ettiğiniz için teşekkür ederiz.")
+                    self.sendNotification()
                     
                 }
                 else{
@@ -182,15 +183,15 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
         }
     }
-    /*@objc func sendNotification() {
+    @objc func sendNotification() {
             // Bildirim içeriğini oluşturma
             let content = UNMutableNotificationContent()
-            content.title = "Merhaba"
-            content.body = "Bu bir bildirim mesajıdır."
+            content.title = "RBK"
+            content.body = "Siparişiniz hazırlanıyor. Bizi tercih ettiğiniz için teşekkür ederiz."
             content.sound = UNNotificationSound.default
             
             // Bildirim tetikleyicisini oluşturma (örneğin, 5 saniye sonra tetiklensin)
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
             
             // Bildirim talebini oluşturma
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -203,6 +204,6 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
                     print("Bildirim gönderildi.")
                 }
             }
-        }*/
+        }
 
 }
