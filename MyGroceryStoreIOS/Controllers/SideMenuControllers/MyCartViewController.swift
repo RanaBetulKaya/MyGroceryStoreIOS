@@ -24,8 +24,13 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBAction func buynowBtn(_ sender: Any) {
         //sendNotification()
-        clearCart()
-        decreaseBudget()
+        isCollectionEmpty(collectionPath: "AddToCart") { isEmpty in
+                if isEmpty {
+                    self.showAlertMessage(title: "Uyarı", message: "Sepetiniz boş.")
+                } else {
+                    self.decreaseBudget()
+                }
+            }
     }
     func didTapDeleteButton(product: MyCartModel) {
         print("Fonk' a  girdikkkkkk")
@@ -125,7 +130,7 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
                         print("Error deleting documents: \(error)")
                         self.showAlertMessage(title: "Hata", message: "Sepet boşaltılamadı. Tekrar deneyiniz.")
                     } else {
-                        self.showAlertMessage(title: "", message: "Sepet başarıyla boşaltıldı.")
+                        //self.showAlertMessage(title: "", message: "Sepet başarıyla boşaltıldı.")
                         self.cartProducts.removeAll()
                         self.totalAmountLabel.text = "0"
                         self.cartCollectionView.reloadData()
@@ -139,21 +144,43 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
         ref.child("Users").child(Auth.auth().currentUser!.uid).observeSingleEvent(of: .value, with: {(snapshot) in
             if let userData = snapshot.value as? [String: Any]{
                 let budget: Int = userData["budget"] as? Int ?? 0
-                let newBudget = budget - totalAmountInt!
-                
-                let userData = ["budget": newBudget]
-                print("fonk içinde yeni bütçe: \(newBudget)")
-                
-                self.ref.child("Users").child(Auth.auth().currentUser!.uid).updateChildValues(userData){(error, ref) in
-                    if let error = error{
-                        print("Firebase veri güncelleme hatası:\(error.localizedDescription)")
-                    } else{
-                        print("Kullanıcı bilgileri güncellendi")
+                if(budget >= totalAmountInt!){
+                    let newBudget = budget - totalAmountInt!
+                    
+                    let userData = ["budget": newBudget]
+                    print("fonk içinde yeni bütçe: \(newBudget)")
+                    
+                    self.ref.child("Users").child(Auth.auth().currentUser!.uid).updateChildValues(userData){(error, ref) in
+                        if let error = error{
+                            print("Firebase veri güncelleme hatası:\(error.localizedDescription)")
+                        } else{
+                            print("Kullanıcı bilgileri güncellendi")
+                        }
                     }
+                    self.clearCart()
+                    self.showAlertMessage(title: "Siparişiniz Alındı", message: "Siparişiniz başarılı bir şekilde alındı. Bizi tercih ettiğiniz için teşekkür ederiz.")
+                    
                 }
+                else{
+                    self.showAlertMessage(title: "Uyarı", message: "Bütçeniz yeterli değil.")
+                }
+                
             }
         }){(error) in print("Firebase veri alımı başarısız: \(error.localizedDescription)")}
         
+    }
+    func isCollectionEmpty(collectionPath: String, completion: @escaping (Bool) -> Void) {
+
+        let collectionRef = db.collection("CurrentUser").document(Auth.auth().currentUser!.uid).collection(collectionPath)
+
+        collectionRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error checking if collection is empty: \(error)")
+                completion(true)
+            } else {
+                completion(querySnapshot?.isEmpty ?? true)
+            }
+        }
     }
     /*@objc func sendNotification() {
             // Bildirim içeriğini oluşturma
