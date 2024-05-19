@@ -26,10 +26,6 @@ class LoginViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-    // viewDidAppear fonksiyonunu kontrol et
-    /*override func viewDidAppear(_ animated: Bool) {
-        checkUserInfo()
-    }*/
     @IBAction func signUpButton(_ sender: Any) {
         let storyboard=UIStoryboard(name: "Main", bundle: nil)
         let vc=storyboard.instantiateViewController(identifier: "signUpView")
@@ -42,37 +38,24 @@ class LoginViewController: UIViewController {
     }
     
     func validateFields(){
-        if emailnput.text?.isEmpty == true{
-            print("No email text")
-                    return
-        }
-        if passwordInput.text?.isEmpty == true{
-            print("No password text")
-            return
-        }
         signIn()
     }
     func signIn(){
+        
         Auth.auth().signIn(withEmail: emailnput.text!, password: passwordInput.text!){ [weak self] authResult, err in guard let strongSelf = self else{return}
             if let err = err{
                 print(err.localizedDescription)
-                self!.showAlertMessage(title: "Alert", message: "Error")
+                self!.showAlertMessage(title: "HATA", message: "Kullanıcı bilgilerini kontrol ediniz.")
             }
             else{
-                self!.checkUserInfo()
+                    let storyboard=UIStoryboard(name: "Main", bundle: nil)
+                    let vc=storyboard.instantiateViewController(identifier: "MainViewController")
+                    vc.modalPresentationStyle = .overFullScreen
+                    self!.present(vc,animated: true)
+                    print(Auth.auth().currentUser!.uid)
             }
             
         }
     }
-    func checkUserInfo(){
-        if Auth.auth().currentUser != nil{
-            print(Auth.auth().currentUser?.uid as Any)
-        }
-        let storyboard=UIStoryboard(name: "Main", bundle: nil)
-        let vc=storyboard.instantiateViewController(identifier: "MainViewController")
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc,animated: true)
-    }
-
 
 }
