@@ -84,6 +84,7 @@ class DetailViewController: UIViewController {
                 print("Document added to cart successfully")
             }
         }
+        showAlertMessage(title: "", message: "Ürün sepete eklendi")
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
