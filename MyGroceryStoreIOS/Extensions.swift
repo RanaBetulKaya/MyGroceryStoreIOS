@@ -13,7 +13,7 @@ extension UIViewController{
     public func showAlertMessage(title: String, message: String){
         
         let alertMessagePopUpBox = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default)
+        let okButton = UIAlertAction(title: "Tamam", style: .default)
         
         alertMessagePopUpBox.addAction(okButton)
         self.present(alertMessagePopUpBox, animated: true)
