@@ -186,7 +186,7 @@ class MyCartViewController: UIViewController, UICollectionViewDelegate, UICollec
     @objc func sendNotification() {
             // Bildirim içeriğini oluşturma
             let content = UNMutableNotificationContent()
-            content.title = "RBK"
+            content.title = "RBK Sanal Market"
             content.body = "Siparişiniz hazırlanıyor. Bizi tercih ettiğiniz için teşekkür ederiz."
             content.sound = UNNotificationSound.default
             
