@@ -14,4 +14,9 @@ Welcome to the Virtual Market App! This project is a virtual market application 
 <p><b>Storyboard:</b> Used for designing the user interface.</p>
 <p><b>Firebase:</b> Used for backend services, including authentication, database, and storage.</p>
 
-<h2>Screenshots</h2>
+<h2>Package Dependencies</h2>
+<ul>
+  <li>kingfisher</li>
+  <li>firebase-ios-sdk</li>
+</ul>
+<p>You can easily add the pacjages from "File -> Add Package Dependencies"</p>
